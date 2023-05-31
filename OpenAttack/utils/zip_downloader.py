@@ -16,6 +16,8 @@ def make_zip_downloader(URL : str, file_list=None, resource_name = None):
         URL = URL[1:]
 
     def DOWNLOAD(path : str, source : str):
+        if URL == "":
+            return
         if not source.endswith("/"):
             source = source + "/"
         if use_source:

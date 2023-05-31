@@ -5,6 +5,7 @@ class EditDistance(MetricSelector):
     """
     :English: `Levenshtein` ( :py:class:`.PunctTokenizer` )
     :Chinese: `Levenshtein` ( :py:class:`.JiebaTokenizer` )
+    :Tibetan: `Levenshtein` ( :py:class:`.TibetanSyllableTokenizer` )
     """
 
     def _select(self, lang):

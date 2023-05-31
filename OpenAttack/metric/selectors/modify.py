@@ -4,6 +4,7 @@ class ModificationRate(MetricSelector):
     """
     :English: `Modification` ( :py:class:`.PunctTokenizer` )
     :Chinese: `Modification` ( :py:class:`.JiebaTokenizer` )
+    :Tibetan: `Modification` ( :py:class:`.TibetanSyllableTokenizer` )
     """
 
     def _select(self, lang):
