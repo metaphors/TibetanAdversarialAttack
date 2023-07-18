@@ -4,7 +4,7 @@
 
 This repo is the attacker part in the paper below.
 
-***Pay Attention to the Robustness of Chinese Minority Language Models! Syllable-level Textual Adversarial Attack on Tibetan Script (Cao et al., ACL 2023 Workshop - TrustNLP)***
+***[Pay Attention to the Robustness of Chinese Minority Language Models! Syllable-level Textual Adversarial Attack on Tibetan Script](https://trustnlpworkshop.github.io/papers/6.pdf) (Cao et al., ACL 2023 Workshop - TrustNLP)***
 
 We developed a simple Tibetan syllable-level adversarial attack method based on [OpenAttack](https://github.com/thunlp/OpenAttack) ([OpenAttack: An Open-source Textual Adversarial Attack Toolkit (Zeng et al., ACL 2021)](https://aclanthology.org/2021.acl-demo.43.pdf)).
 
