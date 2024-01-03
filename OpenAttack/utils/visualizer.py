@@ -192,6 +192,10 @@ def visualizer(idx, x_orig, y_orig, x_adv, y_adv, info, stream_writer, tokenizer
         # Failed
         left = left_bar_failed(x_orig, y_orig, max_len, tokenizer)
         with open("log/log.txt", "a") as log:
+        # with open("log/log_cino-small-v2_tncc-document_test.txt", "a") as log:
+        # with open("log/log_cino-small-v2_tncc-title_test.txt", "a") as log:
+        # with open("log/log_cino-small-v2_tusa_test.txt", "a") as log:
+        # with open("log/log_cino-small-v2_mitc_test.txt", "a") as log:
         # with open("log/log_cino-base-v2_tncc-document_test.txt", "a") as log:
         # with open("log/log_cino-base-v2_tncc-title_test.txt", "a") as log:
         # with open("log/log_cino-base-v2_tusa_test.txt", "a") as log:
@@ -210,6 +214,10 @@ def visualizer(idx, x_orig, y_orig, x_adv, y_adv, info, stream_writer, tokenizer
     else:
         left = left_bar_print(x_orig, y_orig, x_adv, y_adv, max_len, tokenizer)
         with open("log/log.txt", "a") as log:
+        # with open("log/log_cino-small-v2_tncc-document_test.txt", "a") as log:
+        # with open("log/log_cino-small-v2_tncc-title_test.txt", "a") as log:
+        # with open("log/log_cino-small-v2_tusa_test.txt", "a") as log:
+        # with open("log/log_cino-small-v2_mitc_test.txt", "a") as log:
         # with open("log/log_cino-base-v2_tncc-document_test.txt", "a") as log:
         # with open("log/log_cino-base-v2_tncc-title_test.txt", "a") as log:
         # with open("log/log_cino-base-v2_tusa_test.txt", "a") as log:
