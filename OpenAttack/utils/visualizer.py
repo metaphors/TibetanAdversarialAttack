@@ -204,6 +204,10 @@ def visualizer(idx, x_orig, y_orig, x_adv, y_adv, info, stream_writer, tokenizer
         # with open("log/log_cino-large-v2_tncc-title_test.txt", "a") as log:
         # with open("log/log_cino-large-v2_tusa_test.txt", "a") as log:
         # with open("log/log_cino-large-v2_mitc_test.txt", "a") as log:
+        # with open("log/log_tibetan-bert_tncc-document_test.txt", "a") as log:
+        # with open("log/log_tibetan-bert_tncc-title_test.txt", "a") as log:
+        # with open("log/log_tibetan-bert_tusa_test.txt", "a") as log:
+        # with open("log/log_tibetan-bert_mitc_test.txt", "a") as log:
             log.write("Sample\t"+str(idx)+"\n")
             log.write("Succeed\t"+str(info["Succeed"])+"\n")
             log.write("Running Time\t"+str(info["Running Time"])+"\n")
@@ -226,6 +230,10 @@ def visualizer(idx, x_orig, y_orig, x_adv, y_adv, info, stream_writer, tokenizer
         # with open("log/log_cino-large-v2_tncc-title_test.txt", "a") as log:
         # with open("log/log_cino-large-v2_tusa_test.txt", "a") as log:
         # with open("log/log_cino-large-v2_mitc_test.txt", "a") as log:
+        # with open("log/log_tibetan-bert_tncc-document_test.txt", "a") as log:
+        # with open("log/log_tibetan-bert_tncc-title_test.txt", "a") as log:
+        # with open("log/log_tibetan-bert_tusa_test.txt", "a") as log:
+        # with open("log/log_tibetan-bert_mitc_test.txt", "a") as log:
             log.write("Sample\t"+str(idx)+"\n")
             log.write("Succeed\t"+str(info["Succeed"])+"\n")
             log.write(("Running Time\t"+str(info["Running Time"])+"\n"))
