@@ -191,8 +191,38 @@ def visualizer(idx, x_orig, y_orig, x_adv, y_adv, info, stream_writer, tokenizer
     if x_adv is None:
         # Failed
         left = left_bar_failed(x_orig, y_orig, max_len, tokenizer)
+        with open("log/log.txt", "a") as log:
+        # with open("log/log_cino-base-v2_tncc-document_test.txt", "a") as log:
+        # with open("log/log_cino-base-v2_tncc-title_test.txt", "a") as log:
+        # with open("log/log_cino-base-v2_tusa_test.txt", "a") as log:
+        # with open("log/log_cino-large-v2_tncc-document_test.txt", "a") as log:
+        # with open("log/log_cino-large-v2_tncc-title_test.txt", "a") as log:
+        # with open("log/log_cino-large-v2_tusa_test.txt", "a") as log:
+            log.write("Sample\t"+str(idx)+"\n")
+            log.write("Succeed\t"+str(info["Succeed"])+"\n")
+            log.write("Running Time\t"+str(info["Running Time"])+"\n")
+            log.write("Query Exceeded\t"+str(info["Query Exceeded"])+"\n")
+            log.write("Victim Model Queries\t" + str(info["Victim Model Queries"]) + "\n")
+            log.write("Orig\t"+x_orig+"\t"+str(y_orig.argmax())+"\t"+str(y_orig.max()*100)+"\n")
+            log.write("---\n")
     else:
         left = left_bar_print(x_orig, y_orig, x_adv, y_adv, max_len, tokenizer)
+        with open("log/log.txt", "a") as log:
+        # with open("log/log_cino-base-v2_tncc-document_test.txt", "a") as log:
+        # with open("log/log_cino-base-v2_tncc-title_test.txt", "a") as log:
+        # with open("log/log_cino-base-v2_tusa_test.txt", "a") as log:
+        # with open("log/log_cino-large-v2_tncc-document_test.txt", "a") as log:
+        # with open("log/log_cino-large-v2_tncc-title_test.txt", "a") as log:
+        # with open("log/log_cino-large-v2_tusa_test.txt", "a") as log:
+            log.write("Sample\t"+str(idx)+"\n")
+            log.write("Succeed\t"+str(info["Succeed"])+"\n")
+            log.write(("Running Time\t"+str(info["Running Time"])+"\n"))
+            log.write("Query Exceeded\t"+str(info["Query Exceeded"])+"\n")
+            log.write("Victim Model Queries\t" + str(info["Victim Model Queries"]) + "\n")
+            log.write("Levenshtein Edit Distance\t"+str(info["Levenshtein Edit Distance"])+"\n")
+            log.write("Orig\t"+x_orig+"\t"+str(y_orig.argmax())+"\t"+str(y_orig.max()*100)+"\n")
+            log.write("Adv\t"+x_adv+"\t"+str(y_adv.argmax())+"\t"+str(y_adv.max()*100)+"\n")
+            log.write("---\n")
     
     if len(left) < len(right):
         delta = len(right) - len(left)
