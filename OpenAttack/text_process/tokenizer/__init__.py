@@ -2,6 +2,7 @@ from .base import Tokenizer
 from .jieba_tokenizer import JiebaTokenizer
 from .punct_tokenizer import PunctTokenizer
 from .tibetan_syllable_tokenizer import TibetanSyllableTokenizer
+from .TibetSegEYE.Tibet_tokenlize.maintest import TibetanWordTokenizer
 from .transformers_tokenizer import TransformersTokenizer
 
 def get_default_tokenizer(lang):

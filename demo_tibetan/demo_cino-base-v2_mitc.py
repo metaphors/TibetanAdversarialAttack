@@ -11,7 +11,12 @@ def dataset_mapping(data):
 
 def main():
     print("New Attacker")
-    attacker = OpenAttack.attackers.PWWSAttacker(lang="tibetan")
+    # TSAttacker
+    # attacker = OpenAttack.attackers.PWWSAttacker(lang="tibetan")
+    # TSTricker (syllable level)
+    # attacker = OpenAttack.attackers.PWWSAttacker2(lang="tibetan")
+    # TSTricker (word level)
+    attacker = OpenAttack.attackers.PWWSAttacker3(lang="tibetan")
 
     print("Building model")
     clsf = OpenAttack.loadVictim("XLMROBERTA.CINO-BASE-V2_MITC")

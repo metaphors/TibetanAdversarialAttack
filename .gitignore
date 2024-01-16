@@ -145,6 +145,12 @@ dmypy.json
 
 /data/*
 !/data/AttackAssist.TibetanWord2Vec
+!/data/AttackAssist.TibetSegEYE
+!/data/AttackAssist.CINO-small-v2
+!/data/AttackAssist.CINO-base-v2
+!/data/AttackAssist.CINO-large-v2
+!/data/AttackAssist.TiBERT
+!/data/AttackAssist.Tibetan_BERT
 !/data/Victim.XLMROBERTA.CINO-SMALL-V2_TNCC-DOCUMENT
 !/data/Victim.XLMROBERTA.CINO-SMALL-V2_TNCC-TITLE
 !/data/Victim.XLMROBERTA.CINO-SMALL-V2_TUSA
