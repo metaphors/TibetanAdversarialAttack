@@ -6,14 +6,20 @@ This repo is the attacker part in the paper below.
 
 ***[Pay Attention to the Robustness of Chinese Minority Language Models! Syllable-level Textual Adversarial Attack on Tibetan Script](https://aclanthology.org/2023.trustnlp-1.4) (Cao et al., ACL 2023 Workshop - TrustNLP)***
 
+⬆️ commit id: a17c605d44d53b222b0127f77643519ae33aefd9
+
 We developed a simple Tibetan syllable-level adversarial attack method based on [OpenAttack](https://github.com/thunlp/OpenAttack) ([OpenAttack: An Open-source Textual Adversarial Attack Toolkit (Zeng et al., ACL 2021)](https://aclanthology.org/2021.acl-demo.43.pdf)).
+
+⬆️ commit id: 4df712e0a5aebc03daa9b1ef353da4b7ea0a1b23
 
 ## Usage Method
 
-1. You need to put [the fine-tuned LMs](https://github.com/metaphors/TibetanPLMsFineTuning) into the dirs (data/Victim.XLMROBERTA.CINO-BASE-V2_TNCC-DOCUMENT, data/Victim.XLMROBERTA.CINO-BASE-V2_TNCC-TITLE, data/Victim.XLMROBERTA.CINO-BASE-V2_TUSA, data/Victim.XLMROBERTA.CINO-LARGE-V2_TNCC-DOCUMENT, data/Victim.XLMROBERTA.CINO-LARGE-V2_TNCC-TITLE, data/Victim.XLMROBERTA.CINO-LARGE-V2_TUSA).
+1. You need to put [the fine-tuned LMs](https://github.com/metaphors/TibetanPLMsFineTuning) into the dirs (data/Victim.XLMROBERTA.CINO-SMALL-V2_TNCC-TITLE, data/Victim.XLMROBERTA.CINO-SMALL-V2_TUSA, data/Victim.XLMROBERTA.CINO-BASE-V2_TNCC-DOCUMENT, data/Victim.XLMROBERTA.CINO-BASE-V2_TNCC-TITLE, data/Victim.XLMROBERTA.CINO-BASE-V2_TUSA, data/Victim.XLMROBERTA.CINO-LARGE-V2_TNCC-DOCUMENT, data/Victim.XLMROBERTA.CINO-LARGE-V2_TNCC-TITLE, data/Victim.XLMROBERTA.CINO-LARGE-V2_TUSA, data/Victim.XLMROBERTA.TIBETAN-BERT_TNCC-TITLE, data/Victim.XLMROBERTA.TIBETAN-BERT_TUSA, etc.).
 2. You need to download and unzip [the Tibetan word vectors](https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.bo.300.vec.gz) ([Learning Word Vectors for 157 Languages (Grave et al., LREC 2018)](https://aclanthology.org/L18-1550.pdf)) into the dir (data/AttackAssist.TibetanWord2Vec).
-3. You need to follow [the OpenAttack README](https://github.com/thunlp/OpenAttack) ([OpenAttack: An Open-source Textual Adversarial Attack Toolkit (Zeng et al., ACL 2021)](https://aclanthology.org/2021.acl-demo.43.pdf)) to install the development environment. 
-4. You can run the attack scripts in the dir (demo_tibetan).
+3. You need to put the pre-trained LM: [Tibetan-BERT](https://huggingface.co/UTibetNLP/tibetan_bert) ([Research and Application of Tibetan Pre-training Language Model Based on BERT (Zhang et al., ICCIR 2022)](https://dl.acm.org/doi/10.1145/3548608.3559255)), [TiBERT](http://tibert.cmli-nlp.com) ([TiBERT: Tibetan Pre-trained Language Model (Liu et al., SMC 2022)](https://ieeexplore.ieee.org/document/9945074)), etc. into the dirs (data/AttackAssist.Tibetan_BERT, data/AttackAssist.TiBERT, etc.).
+4. You need to put the trained model: segbase.cpkt (link: [https://pan.baidu.com/s/1j_60cDWVlfryikaP-1Nvbw](https://pan.baidu.com/s/1j_60cDWVlfryikaP-1Nvbw) password: 19pe) of TibetSegEYE ([https://github.com/yjspho/TibetSegEYE](https://github.com/yjspho/TibetSegEYE)) into the dir (data/AttackAssist.TibetSegEYE).
+5. You need to follow [the OpenAttack README](https://github.com/thunlp/OpenAttack) ([OpenAttack: An Open-source Textual Adversarial Attack Toolkit (Zeng et al., ACL 2021)](https://aclanthology.org/2021.acl-demo.43.pdf)) to install the development environment. 
+6. You can run the attack scripts in the dir (demo_tibetan).
 
 ## Citation
 
