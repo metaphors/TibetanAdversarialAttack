@@ -14,9 +14,9 @@ def main():
     # TSAttacker
     # attacker = OpenAttack.attackers.PWWSAttacker(lang="tibetan")
     # TSTricker (syllable level)
-    # attacker = OpenAttack.attackers.PWWSAttacker2(lang="tibetan")
+    attacker = OpenAttack.attackers.PWWSAttacker2(lang="tibetan")
     # TSTricker (word level)
-    attacker = OpenAttack.attackers.PWWSAttacker3(lang="tibetan")
+    # attacker = OpenAttack.attackers.PWWSAttacker3(lang="tibetan")
 
     print("Building model")
     clsf = OpenAttack.loadVictim("BERT.TIBETAN-BERT_MITC")

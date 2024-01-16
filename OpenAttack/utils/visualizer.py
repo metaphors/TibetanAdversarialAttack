@@ -236,7 +236,7 @@ def visualizer(idx, x_orig, y_orig, x_adv, y_adv, info, stream_writer, tokenizer
         # with open("log/log_tibetan-bert_mitc_test.txt", "a") as log:
             log.write("Sample\t"+str(idx)+"\n")
             log.write("Succeed\t"+str(info["Succeed"])+"\n")
-            log.write(("Running Time\t"+str(info["Running Time"])+"\n"))
+            log.write("Running Time\t"+str(info["Running Time"])+"\n")
             log.write("Query Exceeded\t"+str(info["Query Exceeded"])+"\n")
             log.write("Victim Model Queries\t" + str(info["Victim Model Queries"]) + "\n")
             log.write("Levenshtein Edit Distance\t"+str(info["Levenshtein Edit Distance"])+"\n")

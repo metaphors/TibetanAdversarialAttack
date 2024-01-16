@@ -3,7 +3,6 @@ import numpy as np
 
 from ..classification import ClassificationAttacker, Classifier, ClassifierGoal
 from ...text_process.tokenizer import Tokenizer, get_default_tokenizer
-from ...text_process.tokenizer import TibetanWordTokenizer
 # from ...attack_assist.substitute.word import WordSubstitute, get_default_substitute
 from ...utils import get_language, check_language, language_by_name
 # from ...exceptions import WordNotInDictionaryException
@@ -61,8 +60,7 @@ class PWWSAttacker3(ClassificationAttacker):
         # self.substitute = substitute
 
         if tokenizer is None:
-            # tokenizer = get_default_tokenizer(self.__lang_tag)
-            tokenizer = TibetanWordTokenizer()
+            tokenizer = get_default_tokenizer(self.__lang_tag)
         self.tokenizer = tokenizer
 
         # check_language([self.tokenizer, self.substitute], self.__lang_tag)
@@ -127,9 +125,9 @@ class PWWSAttacker3(ClassificationAttacker):
         #     rep_words = []
         # rep_words = list(filter(lambda x: x != word, rep_words))
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        # Tibetan_BERT is better and simpler.
-        # mlm_path = "data/AttackAssist.TiBERT"
-        mlm_path = "data/AttackAssist.Tibetan_BERT"
+        # TiBERT is better and simpler.
+        mlm_path = "data/AttackAssist.TiBERT"
+        # mlm_path = "data/AttackAssist.Tibetan_BERT"
         mlm_tokenizer = BertTokenizer.from_pretrained(mlm_path)
         mlm_model = BertForMaskedLM.from_pretrained(mlm_path).to(device)
         # mlm_path = "data/AttackAssist.CINO-small-v2"
@@ -142,18 +140,23 @@ class PWWSAttacker3(ClassificationAttacker):
         inputs = mlm_tokenizer(self.tokenizer.detokenize(masked_tokens), return_tensors="pt").to(device)
         with torch.no_grad():
             logits = mlm_model(**inputs).logits
-        top_k = 10
+        top_k = 50
         predicted_indices = torch.topk(logits[0, idx], top_k)[1]
         predicted_tokens = mlm_tokenizer.convert_ids_to_tokens(predicted_indices)
         rep_words = []
         for token in predicted_tokens:
             if token == word:
                 continue
-            if token == "་":
+            if token == "[UNK]":
                 continue
-            if "##" in token:
+            if len(word) > 1 and len(token) > 1 and word[-1] == "་" and token[-1] != "་":
                 continue
-            token += '་'
+            if "༼" in token:
+                continue
+            if "༽" in token:
+                continue
+            if "▁" in token:
+                continue
             rep_words.append(token)
         if len(rep_words) == 0:
             return ( word, 0 )

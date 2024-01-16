@@ -140,14 +140,20 @@ class PWWSAttacker2(ClassificationAttacker):
         inputs = mlm_tokenizer(self.tokenizer.detokenize(masked_tokens), return_tensors="pt").to(device)
         with torch.no_grad():
             logits = mlm_model(**inputs).logits
-        top_k = 10
+        top_k = 50
         predicted_indices = torch.topk(logits[0, idx], top_k)[1]
         predicted_tokens = mlm_tokenizer.convert_ids_to_tokens(predicted_indices)
         rep_words = []
         for token in predicted_tokens:
             if token == word:
                 continue
+            if token == "[UNK]":
+                continue
             if token == "་":
+                continue
+            if token == "༼":
+                continue
+            if token == "༽":
                 continue
             if "##" in token:
                 continue

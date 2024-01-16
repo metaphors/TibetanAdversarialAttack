@@ -12,5 +12,9 @@ def get_default_tokenizer(lang):
     if lang == TAG_Chinese:
         return JiebaTokenizer()
     if lang == TAG_Tibetan:
+        # TSAttacker => TibetanSyllableTokenizer
+        # TSTricker (syllable) => TibetanSyllableTokenizer
+        # TSTricker (word) => TibetanWordTokenizer
         return TibetanSyllableTokenizer()
+        # return TibetanWordTokenizer()
     return PunctTokenizer()
