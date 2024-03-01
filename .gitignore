@@ -144,6 +144,8 @@ dmypy.json
 /docs/build
 
 /data/*
+!/data/AttackAssist.TibetanFont
+!/data/AttackAssist.TibetanVisualSimilarity
 !/data/AttackAssist.TibetanWord2Vec
 !/data/AttackAssist.TibetSegEYE
 !/data/AttackAssist.CINO-small-v2
