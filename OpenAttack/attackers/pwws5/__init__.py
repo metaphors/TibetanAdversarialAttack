@@ -14,8 +14,9 @@ from ...attack_assist.filter_words import get_default_filter_words
 
 import json
 from itertools import product
-from PIL import Image, ImageDraw, ImageFont
-import cv2
+from functools import reduce
+# from PIL import Image, ImageDraw, ImageFont
+# import cv2
 
 class PWWSAttacker5(ClassificationAttacker):
     @property
@@ -169,41 +170,57 @@ class PWWSAttacker5(ClassificationAttacker):
         rep_words = []
         substitution_list = []
         for syllable in word.split('་'):
-            syllable_list = [syllable]
+            syllable_list = [[syllable, 1]]
             if syllable in self.similarity_json:
                 for item in self.similarity_json[syllable]:
-                    syllable_list.append(item[0])
+                    if item[1] > 0.8:
+                        syllable_list.append([item[0], item[1]])
             substitution_list.append(syllable_list)
         tmp_list = list(map(list, product(*substitution_list)))
-        tmp_rep_words = []
         for rep_syllables in tmp_list:
-            tmp_rep_word = '་'.join(rep_syllables)
-            if tmp_rep_word != word:
-                tmp_rep_words.append(tmp_rep_word)
-        font = ImageFont.truetype('data/AttackAssist.TibetanFont/NotoSerifTibetanRegular.ttf', 50)
-        image_width, image_height = font.getsize(word)
-        for rep_word in tmp_rep_words:
-            adv_font_width, adv_font_height = font.getsize(rep_word)
-            if adv_font_width > image_width:
-                image_width = adv_font_width
-            if adv_font_height > image_height:
-                image_height = adv_font_height
-        orig_image = Image.new('RGB', (image_width, image_height), (0, 0, 0))
-        draw = ImageDraw.Draw(orig_image)
-        draw.text((0, 0), word, (255, 255, 255), font)
-        orig_image.save(word + '.png')
-        image1 = cv2.imread(word + '.png')
-        gray1 = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
-        for rep_word in tmp_rep_words:
-            adv_image = Image.new('RGB', (image_width, image_height), (0, 0, 0))
-            draw = ImageDraw.Draw(adv_image)
-            draw.text((0, 0), rep_word, (255, 255, 255), font)
-            adv_image.save(rep_word + '.png')
-            image2 = cv2.imread(rep_word + '.png')
-            gray2 = cv2.cvtColor(image2, cv2.COLOR_BGR2GRAY)
-            ssim = cv2.matchTemplate(gray1, gray2, cv2.TM_CCOEFF_NORMED)[0][0]
-            if ssim > 0.8:
-                rep_words.append(rep_word)
+            similarity_list = [rep_syllable[1] for rep_syllable in rep_syllables]
+            similarity = reduce((lambda x, y: x * y), similarity_list)
+            if 1 > similarity > 0.8:
+                rep_words.append('་'.join([rep_syllable[0] for rep_syllable in rep_syllables]))
+        # # below is good, but too slow
+        # rep_words = []
+        # substitution_list = []
+        # for syllable in word.split('་'):
+        #     syllable_list = [syllable]
+        #     if syllable in self.similarity_json:
+        #         for item in self.similarity_json[syllable]:
+        #             syllable_list.append(item[0])
+        #     substitution_list.append(syllable_list)
+        # tmp_list = list(map(list, product(*substitution_list)))
+        # tmp_rep_words = []
+        # for rep_syllables in tmp_list:
+        #     tmp_rep_word = '་'.join(rep_syllables)
+        #     if tmp_rep_word != word:
+        #         tmp_rep_words.append(tmp_rep_word)
+        # font = ImageFont.truetype('data/AttackAssist.TibetanFont/NotoSerifTibetanRegular.ttf', 50)
+        # image_width, image_height = font.getsize(word)
+        # for rep_word in tmp_rep_words:
+        #     adv_font_width, adv_font_height = font.getsize(rep_word)
+        #     if adv_font_width > image_width:
+        #         image_width = adv_font_width
+        #     if adv_font_height > image_height:
+        #         image_height = adv_font_height
+        # orig_image = Image.new('RGB', (image_width, image_height), (0, 0, 0))
+        # draw = ImageDraw.Draw(orig_image)
+        # draw.text((0, 0), word, (255, 255, 255), font)
+        # orig_image.save(word + '.png')
+        # image1 = cv2.imread(word + '.png')
+        # gray1 = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
+        # for rep_word in tmp_rep_words:
+        #     adv_image = Image.new('RGB', (image_width, image_height), (0, 0, 0))
+        #     draw = ImageDraw.Draw(adv_image)
+        #     draw.text((0, 0), rep_word, (255, 255, 255), font)
+        #     adv_image.save(rep_word + '.png')
+        #     image2 = cv2.imread(rep_word + '.png')
+        #     gray2 = cv2.cvtColor(image2, cv2.COLOR_BGR2GRAY)
+        #     ssim = cv2.matchTemplate(gray1, gray2, cv2.TM_CCOEFF_NORMED)[0][0]
+        #     if ssim > 0.8:
+        #         rep_words.append(rep_word)
         if len(rep_words) == 0:
             return ( word, 0 )
         sents = []

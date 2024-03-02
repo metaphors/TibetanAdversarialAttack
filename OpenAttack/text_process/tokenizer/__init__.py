@@ -17,6 +17,6 @@ def get_default_tokenizer(lang):
         # TSTricker (word) => TibetanWordTokenizer
         # TSCheater (syllable) => TibetanSyllableTokenizer
         # TSCheater (word) => TibetanWordTokenizer
-        return TibetanSyllableTokenizer()
-        # return TibetanWordTokenizer()
+        # return TibetanSyllableTokenizer()
+        return TibetanWordTokenizer()
     return PunctTokenizer()
