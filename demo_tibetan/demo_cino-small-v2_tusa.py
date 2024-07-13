@@ -20,7 +20,9 @@ def main():
     # TSCheater (syllable level)
     # attacker = OpenAttack.attackers.PWWSAttacker4(lang="tibetan")
     # TSCheater (word level)
-    attacker = OpenAttack.attackers.PWWSAttacker5(lang="tibetan")
+    # attacker = OpenAttack.attackers.PWWSAttacker5(lang="tibetan")
+    # TSCheaterPlus
+    attacker = OpenAttack.attackers.PWWSAttacker6(lang="tibetan")
 
     print("Building model")
     clsf = OpenAttack.loadVictim("XLMROBERTA.CINO-SMALL-V2_TUSA")
