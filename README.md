@@ -6,7 +6,7 @@ This repo is the attacker part in the paper below.
 
 ***[Multi-Granularity Tibetan Textual Adversarial Attack Method Based on Masked Language Model (Cao et al., WWW 2024 Workshop - SocialNLP)](https://dl.acm.org/doi/10.1145/3589335.3652503)***
 
-⬆️ commit id: HEAD
+⬆️ commit id: 67fdf3500ec3ccd363cfefc884997d7e40169b82
 
 ***[Pay Attention to the Robustness of Chinese Minority Language Models! Syllable-level Textual Adversarial Attack on Tibetan Script (Cao et al., ACL 2023 Workshop - TrustNLP)](https://aclanthology.org/2023.trustnlp-1.4)***
 
