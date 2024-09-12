@@ -12,7 +12,7 @@ This repo is the attacker part in the paper below.
 
 ⬆️ commit id: a17c605d44d53b222b0127f77643519ae33aefd9
 
-We developed a simple Tibetan syllable-level adversarial attack method based on [OpenAttack](https://github.com/thunlp/OpenAttack) ([OpenAttack: An Open-source Textual Adversarial Attack Toolkit (Zeng et al., ACL 2021)](https://aclanthology.org/2021.acl-demo.43.pdf)).
+We developed several Tibetan adversarial attack methods based on [OpenAttack](https://github.com/thunlp/OpenAttack) ([OpenAttack: An Open-source Textual Adversarial Attack Toolkit (Zeng et al., ACL 2021)](https://aclanthology.org/2021.acl-demo.43.pdf)).
 
 ⬆️ commit id: 4df712e0a5aebc03daa9b1ef353da4b7ea0a1b23
 
